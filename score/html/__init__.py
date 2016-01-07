@@ -24,48 +24,7 @@
 # the discretion of STRG.AT GmbH also the competent court, in whose district the
 # Licensee has his registered seat, an establishment or assets.
 
-import os
-from score.init import init_cache_folder, ConfiguredModule
+from ._init import init, ConfiguredHtmlModule
 
 
-defaults = {
-    'rootdir': None,
-    'cachedir': None,
-    'minifier': None,
-}
-
-
-def init(confdict, tpl_conf):
-    """
-    Initializes this module acoording to :ref:`our module initialization
-    guidelines <module_initialization>` with the following configuration keys:
-
-    :confkey:`rootdir` :faint:`[default=None]`
-        Denotes the root folder containing the html templates. Will fall back
-        to the folder in :mod:`score.tpl`'s configuration.
-
-    :confkey:`cachedir` :faint:`[default=None]`
-        A dedicated cache folder for this module. It is generally sufficient
-        to provide a ``cachedir`` for :mod:`score.tpl`, as this module will
-        use a sub-folder of that by default.
-    """
-    conf = dict(defaults.items())
-    conf.update(confdict)
-    if not conf['cachedir'] and tpl_conf.cachedir:
-        conf['cachedir'] = os.path.join(tpl_conf.cachedir, 'js')
-    if conf['cachedir']:
-        init_cache_folder(conf, 'cachedir', autopurge=True)
-    if not conf['rootdir']:
-        conf['rootdir'] = tpl_conf.rootdir
-    tpl_conf.renderer.register_format('html', conf['rootdir'], conf['cachedir'])
-    return ConfiguredHtmlModule()
-
-
-class ConfiguredHtmlModule(ConfiguredModule):
-    """
-    This module's :class:`configuration object
-    <score.init.ConfiguredModule>`.
-    """
-
-    def __init__(self):
-        super().__init__(__package__)
+__all__ = ('init', 'ConfiguredHtmlModule')
