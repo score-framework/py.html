@@ -33,6 +33,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
     ],
     install_requires=[
-        'score.tpl >= 0.1',
+        'score.tpl >= 0.2',
     ],
 )
