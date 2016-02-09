@@ -7,7 +7,7 @@ with open(os.path.join(here, 'README.rst')) as f:
 
 setup(
     name='score.html',
-    version='0.2',
+    version='0.2.1',
     description='Renderer for html files for The SCORE Framework',
     long_description=README,
     author='strg.at',
@@ -33,6 +33,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
     ],
     install_requires=[
-        'score.tpl >= 0.2',
+        'score.tpl >= 0.2.1',
     ],
 )
