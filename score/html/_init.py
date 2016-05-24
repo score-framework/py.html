@@ -39,11 +39,11 @@ def init(confdict, tpl):
     Initializes this module acoording to :ref:`our module initialization
     guidelines <module_initialization>` with the following configuration keys:
 
-    :confkey:`rootdir` :faint:`[default=None]`
+    :confkey:`rootdir` :confdefault:`None`
         Denotes the root folder containing the html templates. Will fall back
         to the folder in :mod:`score.tpl`'s configuration.
 
-    :confkey:`cachedir` :faint:`[default=None]`
+    :confkey:`cachedir` :confdefault:`None`
         A dedicated cache folder for this module. It is generally sufficient
         to provide a ``cachedir`` for :mod:`score.tpl`, as this module will
         use a sub-folder of that by default.
